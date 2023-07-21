@@ -13,7 +13,6 @@
             <field name="name"/>
             <field name="datetime"/>
             <field name="date"/>
-           
         </group>      
     </sheet>
     </form>
