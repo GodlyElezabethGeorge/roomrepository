@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+<record id="supporthub_department_form_view" model="ir.ui.view">
+    <field name="name">SupportHub Department</field>
+    <field name="model">supporthub.department</field>
+    <field name="arch" type="xml">
+    <form>
+    <sheet>
+        <group>
+            <field name="name"/>
+            <field name="datetime"/>
+            <field name="date"/>
+           
+        </group>      
+    </sheet>
+    </form>
+    </field>
+</record>
+
+
+
+
+<record id="supporthub_department_tree_view" model="ir.ui.view">
+    <field name="name">SupportHub Department</field>
+    <field name="model">supporthub.department</field>
+    <field name="arch" type="xml">
+    <tree>
+    
+        <field name="name"/>
+        <field name="datetime"/>
+        <field name="date"/>
+    </tree>
+    </field>
+</record>
+
+
+
+
+
+<record id="action_department" model="ir.actions.act_window">
+    <field name="name">SupportHub Department</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">supporthub.department</field>
+    <field name="view_mode">tree,form</field>
+    <field name="context">{}</field>
+    <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            Create a department
+        </p>
+    </field>
+</record>
+
+
+
+
+<menuitem id="SH360_department_create"
+    name="Create Department"
+    action="action_department"
+    parent="SH360_master"/>     
+              
+     
+</odoo>

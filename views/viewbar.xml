@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <menuitem id="SH360_master"
+          name="SH360"
+          sequence="0"/>
+
+    <menuitem id="SH360_employee"
+          name="Employee Details"
+          parent="SH360_master"/> 
+
+   
+   
+     
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.supporthub.employees,supporthub.employees,model_supporthub_employees,base.group_user,1,1,1,1
+access.supporthub.department,supporthub.department,model_supporthub_department,base.group_user,1,1,1,1
+access.employee.products,employee.products,model_employee_products,base.group_user,1,1,1,1

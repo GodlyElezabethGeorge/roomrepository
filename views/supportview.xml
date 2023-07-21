@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id="supporthub_employees_form_view" model="ir.ui.view">
+    <field name="name">supporthub.employee.form</field>
+    <field name="model">supporthub.employees</field>
+    <field name="arch" type="xml">
+    <form>
+    <header>
+    <field name="state" widget="statusbar" options="{'clickable':'1'}"/>
+    </header>
+    <sheet>
+        <group>
+            <group>    
+                <field name="name"/>
+                <field name="age"/>
+                <field name="department_name"/>
+                <field name="ref"/>
+            </group>
+            <group>
+            <field name="gender"/>
+            <field name="user_id" optional="show" widget="many2one_avatar_user"/>
+            <field name="activity_ids" widget="list_activity" optional="show"/>
+            <field name="active"/>
+            </group>
+            <group>
+            
+            </group>
+        </group>
+    </sheet>
+<notebook>
+    <page id="invoice_tab"  string="Employee Products" >
+        <field name="emp_products">
+            <tree string="Employee Tasks" editable="bottom">
+                <field name="productid"/>
+                <field name="ref"/>
+                <field name="quantity"/>
+                <field name="price" sum="Total of Price"/>
+            </tree>    
+        </field>
+        </page>
+</notebook>
+    <div class="oe_chatter">
+    <field name="message_follower_ids" groups="base.group_user"/>
+    <field name="activity_ids"/>
+    <field name="message_ids"/>
+    </div>
+    </form>
+    </field>
+</record>
+
+
+
+
+<record id="supporthub_employees_tree_view" model="ir.ui.view">
+    <field name="name">supporthub.employee.tree</field>
+    <field name="model">supporthub.employees</field>
+    <field name="arch" type="xml">
+    <tree>
+    
+        <field name="name"/>
+        <field name="age"/>
+        <field name="gender"/>
+        <field name="user_id" optional="show" widget="many2one_avatar_user"/>
+        <field name="activity_ids" widget="list_activity" optional="show"/>
+        <field name="ref"/>
+    </tree>
+    </field>
+</record>
+
+
+<record id="supporthub_employees_search" model="ir.ui.view">
+    <field name="name">supporthub.employee.search</field>
+    <field name="model">supporthub.employees</field>
+    <field name="arch" type="xml">
+    <search>
+        <field name="name"/>
+        <field name="age"/>
+        <field name="gender"/>
+        <field name="user_id" optional="show" widget="many2one_avatar_user"/>
+        <field name="activity_ids" widget="list_activity" optional="show"/>
+        <filter name="filter_male" string="male" domain="[('gender','=','male')]"/>
+        <filter name="filter_female" string="female" domain="[('gender','=','female')]"/>
+        <separator/>
+        <filter name="filter_kids" string="kids" domain="[('age','&lt;=','23')]"/>
+        <filter name="filter_active" string="archived" domain="[('active','=',False)]"/>
+       
+
+    <group expand="0" string="Group By">
+        <filter string="gender" name="group_by_gender" context="{'group_by':'gender'}"/>
+    </group>
+      <searchpanel>
+        <field name="gender" string="Gender" select="multi" enable_counters="1"/>
+    </searchpanel>
+        
+    </search>
+    </field>
+</record>
+
+
+
+<record id="action_employee" model="ir.actions.act_window">
+    <field name="name">Employees</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">supporthub.employees</field>
+    <field name="view_mode">tree,form</field>
+    <field name="context">{'search_default_filter_female':'true','search_default_group_by_gender':'true'}</field>
+    <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            Create an employee
+        </p>
+    </field>
+</record>
+
+
+
+
+<menuitem id="SH360_employee_create"
+    name="Create Employee"
+    action="action_employee"
+    parent="SH360_employee"/>     
+              
+     
+</odoo>
